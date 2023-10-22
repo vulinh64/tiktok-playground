@@ -54,15 +54,11 @@ class TestData {
   @Generated
   public static void happyVietnameseWomenDay(Employee employee) {
     Optional.ofNullable(employee)
-        .map(Employee::gender)
-        .filter(Gender.FEMALE::equals)
+        .filter(other -> Gender.FEMALE.equals(other.gender()))
         // Hàm này Java 9+ mới dùng được bạn nhé
         .ifPresentOrElse(
-            e ->
-                    System.out.printf(
-                            "Chúc bạn %s ngày phụ nữ Việt Nam ý nghĩa!%n", e.name()),
+            e -> System.out.printf("Chúc bạn %s ngày phụ nữ Việt Nam ý nghĩa!%n", e.name()),
             () ->
-                System.out.println(
-                        "Chúc bạn hạnh phúc bên những người phụ nữ thân yêu của bạn!"));
+                System.out.println("Chúc bạn hạnh phúc bên những người phụ nữ thân yêu của bạn!"));
   }
 }
